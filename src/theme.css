@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Rounded Mplus 1c Bold";
+    src: url("./public/font/MPLUSRounded1c-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@theme {
+    --color-white: #ffffff;
+    --color-blue: #81c5eb;
+    --color-black: #000000;
+    --color-green: #6cc4a1;
+    --color-beige: #fff3cf;
+    --color-gray: #77828b;
+
+    --font-family: "Rounded Mplus 1c Bold", sans-serif;
+
+    --font-size-xs: 16px;
+    --font-size-sm: 20px;
+    --font-size-base: 28px;
+    --font-size-lg: 64px;
+    --font-size-xl: 120px;
+
+    --border-radius-xs: 10px;
+    --border-radius-sm: 15px;
+    --border-radius-md: 30px;
+    --border-radius-lg: 40px;
+
+    --border-width: 4px;
+    --border-style: solid;
+
+    --shadow-custom: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
