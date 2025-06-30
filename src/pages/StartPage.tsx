@@ -45,7 +45,7 @@ const StartPage: React.FC = () => {
                 <Button
                     label="つなげる"
                     direction="forward"
-                    to="/Connect"
+                    to="/ConnectPage"
                     className="w-[220px] h-[64px] text-lg rounded-md"
                 />
             </div>
