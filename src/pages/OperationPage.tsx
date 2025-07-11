@@ -7,19 +7,34 @@ import CtrlButton from "../components/CtrlButton";
 const OperationPage: React.FC = () => {
     return (
         <div
-            className="w-screen h-screen flex flex-col items-center justify-start px-4 pt-12"
+            className="w-screen h-screen flex flex-col px-4 pt-12"
             style={{ backgroundColor: "var(--color-beige)" }}
         >
 
-            <div className="mt-25">
+            <div className="flex justify-between items-center px-6 py-2">
+                <Logo />
                 <Button
                     label="おわる"
                     direction="forward"
                     to="/"
-                    className="w-[220px] h-[64px] text-lg rounded-md"
+                    className="w-[80px] h-[28px] text-lg rounded-md"
                 />
             </div>
 
+
+            <div className="absolute bottom-16 left-24 flex flex-col gap-8">
+                <div></div>
+                <CtrlButton direction="straight" onClick={() => console.log("↑")} />
+                <div></div>
+
+                <div></div>
+                <CtrlButton direction="back" onClick={() => console.log("↓")} />
+                <div></div>
+            </div>
+            <div className="absolute bottom-50 right-20 flex flex-row gap-12">
+                <CtrlButton direction="left" onClick={() => console.log("←")} />
+                <CtrlButton direction="right" onClick={() => console.log("→")} />
+            </div>
         </div>
     )
 }
