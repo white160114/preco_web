@@ -1,4 +1,5 @@
 import React from "react";
+import "../theme.css";
 
 type Direction = 'straight' | 'right' | 'back' | 'left';
 
@@ -28,9 +29,13 @@ const CtrlButton: React.FC<CtrlButtonProps> = ({ direction, onClick }) => {
     return (
         <button
             onClick={onClick}
-            className="w-20 h-20 bg-sky-400 rounded shadow-md flex item-center justify-center"
+            className="w-32 h-32 rounded shadow-md flex items-center justify-center"
+            style={{
+                backgroundColor: "var(--color-blue)",
+                boxShadow: "var(--shadow-custom)"
+            }}
         >
-            <div className={`w-8 h-8 border-t-8 border-l-8 border-white ${rotation}`} />
+            <div className={`w-10 h-10 border-t-[12px] border-l-[12px] border-white ${rotation}`} />
         </button>
     );
 };
