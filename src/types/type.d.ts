@@ -1,4 +1,4 @@
-// src/types/bluetooth.d.ts
+// type.d.ts
 
 interface RequestDeviceOptions {
     filters?: Array<{
@@ -19,6 +19,8 @@ interface BluetoothRemoteGATTServer {
     connect(): Promise<BluetoothRemoteGATTServer>;
     disconnect(): void;
     getPrimaryService(service: string): Promise<BluetoothRemoteGATTService>;
+    /** ← 追加 */
+    readonly connected: boolean;
 }
 
 interface BluetoothRemoteGATTService {
@@ -29,6 +31,8 @@ interface BluetoothRemoteGATTService {
 
 interface BluetoothRemoteGATTCharacteristic {
     readValue(): Promise<DataView>;
+    /** ← 追加 */
+    writeValue(value: BufferSource): Promise<void>;
 }
 
 interface Bluetooth {
