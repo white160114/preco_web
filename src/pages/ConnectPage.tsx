@@ -1,12 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import Button from "../components/Button";
 import phone from "../assets/phone.png";
 import caterpillar from "../assets/caterpillar.png";
 import "../theme.css";
+import "../bluetooth";
+import { useLocation } from "react-router-dom";
+import { connectBluetooth } from "../bluetooth";
 
 const ConnectPage: React.FC = () => {
-    const [connected, setConnected] = useState(false);
+    const location = useLocation();
+    const shouldConnect = location.state?.shouldConnect;
+
+    const [isConnected, setIsConnected] = useState(false);
+
+    useEffect(() => {
+        const connect = async () => {
+            if (shouldConnect) {
+                console.log("接続開始！");
+                try {
+                    await connectBluetooth();
+                    setIsConnected(true); // 接続成功したら状態を更新
+                } catch (error) {
+                    console.error("接続失敗:", error);
+                    setIsConnected(false);
+                }
+            }
+        };
+        connect();
+    }, [shouldConnect]);
+
+
     return (
         <div
             className="w-screen h-screen flex flex-col items-center justify-start px-4 pt-12"
@@ -34,7 +58,7 @@ const ConnectPage: React.FC = () => {
                     color: "var(--color-black)"
                 }}
             >
-                {connected ? "せつぞくできたよ！" : "せつぞくしているよ・・・"}
+                {isConnected ? "せつぞくできたよ！" : "せつぞくしているよ・・・"}
             </p>
 
             <div className="mt-25">

@@ -3,6 +3,7 @@ import "../theme.css";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
 import CtrlButton from "../components/CtrlButton";
+import { sendDirection, disconnectDevice } from "../bluetooth";
 
 const OperationPage: React.FC = () => {
     return (
