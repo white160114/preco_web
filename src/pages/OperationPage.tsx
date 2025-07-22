@@ -3,8 +3,22 @@ import "../theme.css";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
 import CtrlButton from "../components/CtrlButton";
+import { useNavigate } from "react-router-dom";
+import { sendDirection, disconnectDevice } from "../bluetooth";
 
 const OperationPage: React.FC = () => {
+
+    const navigate = useNavigate();
+
+    const handleDirection = (direction: "forward" | "backward" | "left" | "right") => {
+        sendDirection(direction);
+    };
+
+    const handleEnd = () => {
+        disconnectDevice();
+        navigate("/")
+    };
+
     return (
         <div
             className="w-screen h-screen flex flex-col px-4 pt-12"
@@ -16,7 +30,7 @@ const OperationPage: React.FC = () => {
                 <Button
                     label="おわる"
                     direction="forward"
-                    to="/"
+                    onClick={handleEnd}
                     className="w-[80px] h-[28px] text-lg rounded-md"
                 />
             </div>
@@ -24,16 +38,16 @@ const OperationPage: React.FC = () => {
 
             <div className="absolute bottom-16 left-24 flex flex-col gap-8">
                 <div></div>
-                <CtrlButton direction="straight" onClick={() => console.log("↑")} />
+                <CtrlButton direction="straight" onClick={() => handleDirection("forward")} />
                 <div></div>
 
                 <div></div>
-                <CtrlButton direction="back" onClick={() => console.log("↓")} />
+                <CtrlButton direction="back" onClick={() => handleDirection("backward")} />
                 <div></div>
             </div>
             <div className="absolute bottom-50 right-20 flex flex-row gap-12">
-                <CtrlButton direction="left" onClick={() => console.log("←")} />
-                <CtrlButton direction="right" onClick={() => console.log("→")} />
+                <CtrlButton direction="left" onClick={() => handleDirection("left")} />
+                <CtrlButton direction="right" onClick={() => handleDirection("right")} />
             </div>
         </div>
     )

@@ -1,9 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import Button from "../components/Button";
 import "../theme.css";
 
 const StartPage: React.FC = () => {
+
+    const navigate = useNavigate();
+
+    const handleStartConnection = () => {
+        navigate("/ConnectPage", {
+            state: { shouldConnect: true },
+        });
+    };
     return (
         <div
             className="w-screen h-screen flex flex-col items-center justify-start px-4 pt-12"
@@ -45,7 +54,7 @@ const StartPage: React.FC = () => {
                 <Button
                     label="つなげる"
                     direction="forward"
-                    to="/ConnectPage"
+                    onClick={handleStartConnection}
                     className="w-[220px] h-[64px] text-lg rounded-md"
                 />
             </div>
